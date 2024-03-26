@@ -1,0 +1,60 @@
+{
+  "name": "ethers-watcher-poc",
+  "private": "true",
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "ncc run src/index.ts",
+    "build": "ncc build -sm src/index.ts",
+    "lint": "gts lint",
+    "clean": "gts clean",
+    "compile": "tsc",
+    "fix": "gts fix",
+    "test": "c8 ava"
+  },
+  "dependencies": {
+    "@t3-oss/env-core": "^0.9.2",
+    "dotenv": "^16.4.5",
+    "ethers": "^6.11.1",
+    "node-schedule": "^2.1.1",
+    "pino": "^8.19.0",
+    "zod": "^3.22.4"
+  },
+  "devDependencies": {
+    "@types/node": "^20.11.27",
+    "@types/node-schedule": "^2.1.6",
+    "@vercel/ncc": "^0.38.1",
+    "ava": "^6.1.2",
+    "c8": "^9.1.0",
+    "eslint-plugin-security": "^2.1.1",
+    "eslint-plugin-sonarjs": "^0.24.0",
+    "gts": "^5.2.0",
+    "prettier-plugin-organize-imports": "^3.2.4",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.4.2"
+  },
+  "ava": {
+    "extensions": [
+      "ts"
+    ],
+    "require": [
+      "ts-node/register"
+    ],
+    "timeout": "180s",
+    "failFast": true
+  },
+  "c8": {
+    "exclude": [
+      "test",
+      "src/*.ts"
+    ],
+    "reporter": [
+      "text",
+      "cobertura",
+      "html",
+      "json-summary"
+    ]
+  }
+}
